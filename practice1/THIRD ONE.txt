@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main() {
+    srand(time(0));
+    vector<int> numbers;
+    int num;
+
+    cout << "Вводите числа (0 для остановки):" << endl;
+    do {
+        num = rand() % 100;  // Генерация числа от 0 до 99
+        cout << "Сгенерировано: " << num << endl;
+        numbers.push_back(num);
+    } while (num != 0);
+
+    cout << "Все числа, кроме последнего:" << endl;
+    for (size_t i = 0; i < numbers.size() - 1; ++i) {
+        cout << numbers[i] << " ";
+    }
+    return 0;
+}

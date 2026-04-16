@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иван Кожедуб - легендарный летчик-ас</title>
+    <style>
+        :root {
+            --main-color: #8B0000;
+            --secondary-color: #DAA520;
+            --bg-color: #F5F5DC;
+            --text-color: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            background-attachment: fixed;
+            background-size: cover;
+            background-blend-mode: overlay;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: rgba(139, 0, 0, 0.9);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 3px solid var(--secondary-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border: 5px solid var(--secondary-color);
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .main-content {
+            flex: 2;
+            min-width: 300px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-left: 5px solid var(--main-color);
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .info-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-top: 3px solid var(--secondary-color);
+        }
+        
+        h2 {
+            color: var(--main-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: var(--main-color);
+            margin: 1.5rem 0 1rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1rem;
+            background-color: rgba(218, 165, 32, 0.2);
+            border-left: 4px solid var(--secondary-color);
+            margin: 1.5rem 0;
+        }
+        
+        .awards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .award {
+            text-align: center;
+            padding: 1rem;
+            background-color: rgba(139, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        
+        .award img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: rgba(139, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            border-top: 3px solid var(--secondary-color);
+        }
+        
+        footer p {
+            text-align: center;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 80px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--main-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-content {
+            padding: 1rem;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            left: -80px;
+            top: 0;
+            width: 70px;
+            padding: 0.3rem;
+            background-color: var(--main-color);
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .timeline {
+                padding-left: 60px;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-date {
+                left: -60px;
+                width: 50px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Иван Никитович Кожедуб</h1>
+            <p>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤТрижды Герой Советского Союза, легендарный лётчик-ас Великой Отечественной войны</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Ivan_Kozhedub_1.jpg/800px-Ivan_Kozhedub_1.jpg" alt="Иван Кожедуб" class="hero-image">
+        
+        <div class="content">
+            <main class="main-content">
+                <h2>Биография</h2>
+                <p>Иван Никитович Кожедуб (8 июня 1920 — 8 августа 1991) — советский военный лётчик, маршал авиации, трижды Герой Советского Союза. Самый результативный лётчик-истребитель в авиации союзников (64 подтверждённых победы) во Второй мировой войне.</p>
+                
+                <div class="quote">
+                    "Я никогда не боялся смерти в бою. Боялся только одного — не выполнить задание, подвести товарищей."
+                </div>
+                
+                <h3>Ранние годы</h3>
+                <p>Родился в селе Ображиевка Черниговской губернии (ныне Сумская область Украины) в крестьянской семье. С детства мечтал о небе, занимался в аэроклубе. В 1940 году окончил Чугуевскую военную авиационную школу лётчиков.</p>
+                
+                <h3>Боевой путь</h3>
+                <p>На фронтах Великой Отечественной войны с марта 1943 года. Воевал на Воронежском, Степном, 2-м Украинском и 1-м Белорусском фронтах. Летал на истребителях Ла-5 и Ла-7.</p>
+                
+                <h3>Подвиги и победы</h3>
+                <p>За время войны совершил 330 боевых вылетов, провёл 120 воздушных боёв, лично сбил 64 вражеских самолёта (включая один реактивный Me-262). Ни разу не был сбит, хотя его самолёт получал повреждения.</p>
+                
+                <h3>После войны</h3>
+                <p>После войны продолжал службу в ВВС, командовал авиационными соединениями. В 1985 году ему было присвоено звание маршала авиации. Автор мемуаров "Служу Родине" и "Верность Отчизне".</p>
+                
+                <h2>Хронология важных событий</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">1920</div>
+                        <div class="timeline-content">
+                            <p>Родился 8 июня в селе Ображиевка Черниговской губернии в семье крестьянина</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1934</div>
+                        <div class="timeline-content">
+                            <p>Окончил 7 классов школы и поступил в Шосткинский химико-технологический техникум</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1938</div>
+                        <div class="timeline-content">
+                            <p>Начал заниматься в Шосткинском аэроклубе, где совершил свой первый полет</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1940</div>
+                        <div class="timeline-content">
+                            <p>Окончил Чугуевскую военную авиационную школу лётчиков и был оставлен там инструктором</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1941</div>
+                        <div class="timeline-content">
+                            <p>С началом войны вместе с авиашколой эвакуирован в Среднюю Азию, продолжал готовить летные кадры</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1943</div>
+                        <div class="timeline-content">
+                            <p>В марте прибыл на Воронежский фронт в составе 240-го истребительного авиаполка. Первый боевой вылет оказался неудачным - самолет Кожедуба был поврежден огнем зениток</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1943</div>
+                        <div class="timeline-content">
+                            <p>6 июля одержал первую воздушную победу, сбив немецкий бомбардировщик Ju-87. В этом же бою был подбит, но смог посадить поврежденный самолет</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1944</div>
+                        <div class="timeline-content">
+                            <p>4 февраля получил звание Героя Советского Союза за 146 боевых вылетов и 20 сбитых самолетов противника</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1944</div>
+                        <div class="timeline-content">
+                            <p>19 августа удостоен второй медали "Золотая Звезда" за 256 боевых вылетов и 48 сбитых самолетов</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1945</div>
+                        <div class="timeline-content">
+                            <p>19 февраля сбил немецкий реактивный истребитель Me-262, что стало редким достижением для поршневых самолетов</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1945</div>
+                        <div class="timeline-content">
+                            <p>18 августа получил третью медаль "Золотая Звезда" за высокое боевое мастерство и личное мужество</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1949</div>
+                        <div class="timeline-content">
+                            <p>Окончил Военно-воздушную академию и был назначен заместителем командира истребительной авиационной дивизии</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1956</div>
+                        <div class="timeline-content">
+                            <p>Окончил Военную академию Генерального штаба и получил назначение на должность первого заместителя командующего ВВС Ленинградского военного округа</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1964</div>
+                        <div class="timeline-content">
+                            <p>Назначен первым заместителем командующего авиацией Московского военного округа</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1971</div>
+                        <div class="timeline-content">
+                            <p>Издал свою первую книгу мемуаров "Служу Родине", которая стала бестселлером</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1985</div>
+                        <div class="timeline-content">
+                            <p>Удостоен звания маршала авиации - высшего воинского звания для авиационных командиров</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1991</div>
+                        <div class="timeline-content">
+                            <p>Скончался 8 августа в Москве на 72-м году жизни. Похоронен с воинскими почестями на Новодевичьем кладбище</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+            <aside class="sidebar">
+                <div class="info-card">
+                    <h2>Основные данные</h2>
+                    <p><strong>Дата рождения:</strong> 8 июня 1920</p>
+                    <p><strong>Место рождения:</strong> Ображиевка, Украина</p>
+                    <p><strong>Дата смерти:</strong> 8 августа 1991 (71 год)</p>
+                    <p><strong>Принадлежность:</strong> СССР</p>
+                    <p><strong>Род войск:</strong> Военно-воздушные силы</p>
+                    <p><strong>Годы службы:</strong> 1940—1985</p>
+                    <p><strong>Звание:</strong> Маршал авиации</p>
+                </div>
+                
+                <div class="info-card">
+                    <h2>Боевые показатели</h2>
+                    <ul>
+                        <li>330 боевых вылетов</li>
+                        <li>120 воздушных боёв</li>
+                        <li>64 сбитых самолёта</li>
+                        <li>16 типов сбитых самолётов</li>
+                        <li>0 потерь своих самолётов</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h2>Награды</h2>
+                    <div class="awards">
+                        <div class="award">
+                            
+                            <p>Герой Советского Союза (3 раза)</p>
+                        </div>
+                        <div class="award">
+
+                            <p>Орден Ленина (2 раза)</p>
+                        </div>
+                        <div class="award">
+                            
+                            <p>Орден Красного Знамени (7 раз)</p>
+                        </div>
+                        <div class="award">
+                           
+                            <p>Орден Александра Невского</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h2>Интересные факты</h2>
+                    <ul>
+                        <li>19 февраля 1945 года сбил немецкий реактивный истребитель Me-262</li>
+                        <li>Его именем названы улицы в Москве, Киеве, Сумах и других городах</li>
+                        <li>Бронзовый бюст установлен на родине в селе Ображиевка</li>
+                        <li>В 2010 году в его честь выпущена почтовая марка Украины</li>
+                        <li>Его личный самолет Ла-7 с бортовым номером 27 хранится в музее ВВС в Монино</li>
+                        <li>В 2018 году в России учреждена медаль "Иван Кожедуб" для награждения военных летчиков</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Память героев Великой Отечественной войны</p>
+            <p>Материалы собраны из открытых источников</p>
+        </div>
+    </footer>
+</body>
+</html>

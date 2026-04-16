@@ -1,0 +1,42 @@
+CREATE TABLE Authors (
+    AuthorID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Books (
+    BookID INT PRIMARY KEY AUTO_INCREMENT,
+    Title VARCHAR(100) NOT NULL,
+    Year INT
+);
+
+CREATE TABLE BooksAuthors (
+    BookID INT,
+    AuthorID INT,
+    PRIMARY KEY (BookID, AuthorID),
+    FOREIGN KEY (BookID) REFERENCES Books(BookID),
+    FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID)
+);
+
+CREATE TABLE Readers (
+    ReaderID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Issues (
+    IssueID INT PRIMARY KEY AUTO_INCREMENT,
+    BookID INT,
+    ReaderID INT,
+    IssueDate DATE,
+    ReturnDate DATE,
+    FOREIGN KEY (BookID) REFERENCES Books(BookID),
+    FOREIGN KEY (ReaderID) REFERENCES Readers(ReaderID)
+);
+
+INSERT INTO Authors (Name) VALUES ('Лев Толстой');
+INSERT INTO Books (Title, Year) VALUES ('Война и мир', 1869);
+INSERT INTO BooksAuthors VALUES (1, 1);
+
+SELECT Books.Title, Authors.Name 
+FROM Books 
+JOIN BooksAuthors ON Books.BookID = BooksAuthors.BookID 
+JOIN Authors ON BooksAuthors.AuthorID = Authors.AuthorID;
